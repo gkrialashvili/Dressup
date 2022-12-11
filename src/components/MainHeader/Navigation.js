@@ -1,6 +1,7 @@
 import React from 'react';
 
-import classes from './Navigation.module.css';
+import classes from './Navigation.module.scss';
+import LogoutIcon from '../../assets/images/logout.svg'
 
 const Navigation = (props) => {
   return (
@@ -8,17 +9,8 @@ const Navigation = (props) => {
       <ul>
         {props.isLoggedIn && (
           <li>
-            <a href="/">Users</a>
-          </li>
-        )}
-        {props.isLoggedIn && (
-          <li>
-            <a href="/">Admin</a>
-          </li>
-        )}
-        {props.isLoggedIn && (
-          <li>
-            <button onClick={props.onLogout}>Logout</button>
+              <img src={LogoutIcon} alt='logout icon' />
+            <button onClick={props.onLogout}>გამოსვლა</button>
           </li>
         )}
       </ul>

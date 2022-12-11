@@ -1,0 +1,20 @@
+.main-header {
+/*  position: fixed;
+  top: 0;
+  left: 0;*/
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+
+  .logo {
+    min-height: 7.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0 6.875rem;
+    img {
+      max-height: 2.75rem;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+.login {
+  max-width: 30rem;
+  width: 95%;
+  height: 36rem;
+  display: flex;
+  padding-top: 2.5rem;
+  justify-content: center;
+  margin-bottom: 13.4375rem;
+  border-radius: 32px;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  img {
+    max-height: 9rem;
+  }
+}
+
+.control {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 25rem;
+
+
+  label,
+  input {
+    display: block;
+  }
+  label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #34404E;
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+
+  }
+  input {
+    border: 1px solid #ccc;
+    background: #F4F7FA;
+    border-radius: 6px;
+    height: 3.5rem;
+    width: 100%;
+    padding-left: 0.9375rem;
+
+    &:focus {
+      outline: none;
+      border-color: #4f005f;
+      background: #f6dbfc;
+    }
+  }
+
+  &.invalid {
+    input {
+      border-color: red;
+      background: #fbdada;
+    }
+  }
+}
+
+.actions {
+  text-align: center;
+}

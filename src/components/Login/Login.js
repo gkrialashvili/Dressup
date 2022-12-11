@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 import Card from '../UI/Card/Card';
-import classes from './Login.module.css';
+import classes from './Login.module.scss';
 import Button from '../UI/Button/Button';
+import Frame from '../../assets/images/Frame.png'
 
 const Login = (props) => {
-  const [enteredEmail, setEnteredEmail] = useState('');
-  const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEnteredPassword] = useState('');
-  const [passwordIsValid, setPasswordIsValid] = useState();
+  const [enteredName, setEnteredName] = useState('');
+  const [nameIsValid, setNameIsValid] = useState();
+  const [enteredNumber, setEnteredNumber] = useState('');
+  const [numberIsValid, setNumberIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
@@ -19,78 +20,74 @@ const Login = (props) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     console.log('Checking form validity!');
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
+  const nameChangeHandler = (event) => {
 
-  //   return () => {
-  //     console.log('CLEANUP');
-  //     clearTimeout(identifier);
-  //   };
-  // }, [enteredEmail, enteredPassword]);
-
-  const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
+    const re = /^[a-zA-Z\s]*$/;
+    if (event.target.value === '' || re.test(event.target.value)) {
+      setEnteredName(event.target.value);
+    }
 
     setFormIsValid(
-      event.target.value.includes('@') && enteredPassword.trim().length > 6
+        enteredName.trim().length > 0 && enteredNumber.includes(' ')
     );
   };
 
-  const passwordChangeHandler = (event) => {
-    setEnteredPassword(event.target.value);
+  const numberChangeHandler = (e) => {
+    const re = /^[0-9\b]+$/;
+    if (e.target.value === '' || re.test(e.target.value)) {
+      setEnteredNumber(e.target.value);
+    }
 
     setFormIsValid(
-      enteredEmail.includes('@') && event.target.value.trim().length > 6
+        enteredNumber.trim().length > 6
     );
   };
 
-  const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes('@'));
+  const validateNameHandler = () => {
+    setNameIsValid(enteredName.trim().length > 0) && enteredNumber.includes(' ');
   };
 
-  const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+  const validateNumberHandler = () => {
+    setNumberIsValid(enteredNumber.trim().length > 6);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(enteredEmail, enteredPassword);
+    props.onLogin(enteredName, enteredNumber);
   };
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
+        <img src={Frame} alt='' />
         <div
           className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ''
+            nameIsValid === false ? classes.invalid : ''
           }`}
         >
-          <label htmlFor="email">E-Mail</label>
+          <label htmlFor="name">სახელი გვარი</label>
           <input
-            type="email"
-            id="email"
-            value={enteredEmail}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
+              placeholder='სახელი გვარი'
+            type="text"
+            id="name"
+            value={enteredName}
+            onChange={nameChangeHandler}
+            onBlur={validateNameHandler}
           />
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
+            numberIsValid === false ? classes.invalid : ''
           }`}
         >
-          <label htmlFor="password">Password</label>
+          <label htmlFor="cardNumber">ბარათის ნომერი</label>
           <input
-            type="password"
-            id="password"
-            value={enteredPassword}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
+              placeholder='ბარათის ნომერი'
+            type="text"
+            id="cardNumber"
+            value={enteredNumber}
+            onChange={numberChangeHandler}
+            onBlur={validateNumberHandler}
           />
         </div>
         <div className={classes.actions}>
