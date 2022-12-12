@@ -71,7 +71,7 @@ const Home = () => {
               {
                   navLinks.map(e => {
                       return (
-                          <div className={`${classes.navigationCard} ${activeId === e.id? classes.active : ''}`}
+                          <div key={e.id} className={`${classes.navigationCard} ${activeId === e.id? classes.active : ''}`}
                                onClick={() => setActiveId(e.id)}>
                               <img src={e.img} alt='card' />
                               <p>{e.link}</p>
