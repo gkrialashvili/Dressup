@@ -17,3 +17,10 @@ main {
   display: flex;
   justify-content: center;
 }
+
+@media (min-width: 992px) {
+  html {
+    font-size: 12px;
+  }
+  
+}
