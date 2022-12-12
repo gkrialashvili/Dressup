@@ -18,13 +18,13 @@
       margin: 0;
       display: flex;
       align-items: center;
+      cursor: pointer;
       img {
         max-height: 1.5rem;
       }
-      button {
+      p {
         margin-left: 0.90625rem;
         font: inherit;
-        cursor: pointer;
         background: transparent;
         border: none;
         color: #fff;

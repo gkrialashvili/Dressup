@@ -8,9 +8,9 @@ const Navigation = (props) => {
     <nav className={classes.nav}>
       <ul>
         {props.isLoggedIn && (
-          <li>
+          <li onClick={props.onLogout}>
               <img src={LogoutIcon} alt='logout icon' />
-            <button onClick={props.onLogout}>გამოსვლა</button>
+            <p>გამოსვლა</p>
           </li>
         )}
       </ul>

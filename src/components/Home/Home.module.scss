@@ -1,0 +1,36 @@
+.home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 6.875rem;
+  .homeNavigation {
+    width: 30%;
+    max-width: 29.375rem;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      color: #161B21;
+    }
+    .navigationCard {
+      width: 95%;
+      display: flex;
+      height: 6rem;
+      border-radius: 20px;
+      border: 1.7px solid #EAF1F9;
+      background: #FBFCFD;
+      align-items: center;
+      padding-left: 2rem;
+      cursor: pointer;
+
+      &:active,
+      &:hover{
+        background: #EAF1F9;
+      }
+    }
+  }
+}
