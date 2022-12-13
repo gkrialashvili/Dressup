@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import classes from './Home.module.scss';
 
@@ -6,16 +6,17 @@ import CardSvg from '../../assets/images/card.svg'
 import UserSvg from '../../assets/images/user-square.svg'
 import BoxSvg from '../../assets/images/box.svg'
 import CardInfo from "./CardInfo";
+import PersonalInfo from "./personal-info/PersonalInfo";
 
 const navLinks = [
     {
         id: 1,
-        link: 'ჩემი კაბინეტი',
+        link: 'ბარათის მონაცემები',
         img: CardSvg
     },
     {
         id: 2,
-        link: 'ბარათის მონაცემები',
+        link: 'ჩემი კაბინეტი',
         img: UserSvg
     },
     {
@@ -67,6 +68,17 @@ const Home = () => {
 
     const [activeId, setActiveId] = useState(1);
 
+    const switchToEditHandler = (id) => {
+        localStorage.setItem('activeId', JSON.stringify(id))
+        setActiveId(id)
+    }
+
+
+    useEffect(() => {
+        const navLinkId = JSON.parse(localStorage.getItem('activeId'));
+        setActiveId(navLinkId)
+    }, [activeId]);
+
   return (
       <section className={classes.home}>
           <div className={classes.homeNavigation}>
@@ -77,7 +89,7 @@ const Home = () => {
                   navLinks.map(e => {
                       return (
                           <div key={e.id} className={`${classes.navigationCard} ${activeId === e.id? classes.active : ''}`}
-                               onClick={() => setActiveId(e.id)}>
+                               onClick={() => switchToEditHandler(e.id)}>
                               <img src={e.img} alt='card' />
                               <p>{e.link}</p>
                           </div>
@@ -88,6 +100,10 @@ const Home = () => {
           {
               activeId === 1 && <CardInfo cardInfo={cardInfoData} />
           }
+          {
+              activeId === 2 && <PersonalInfo />
+          }
+
       </section>
 
   );
