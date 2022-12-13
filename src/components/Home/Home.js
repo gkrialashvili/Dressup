@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 
-import Card from '../UI/Card/Card';
 import classes from './Home.module.scss';
 
 import CardSvg from '../../assets/images/card.svg'
 import UserSvg from '../../assets/images/user-square.svg'
 import BoxSvg from '../../assets/images/box.svg'
-import BigCard from '../../assets/images/Frame.png'
+import CardInfo from "./CardInfo";
 
 const navLinks = [
     {
@@ -29,32 +28,38 @@ const cardInfoData = [
     {
         id: 1,
         name: 'აქტიური ქულა',
-        value: 135.00
+        value: "135.00",
+        color: '#3FDE81'
     },
     {
         id: 2,
         name: 'დასარიცხი ქულა',
-        value: 135.00
+        value: "55.00",
+        color: '#FA9F65'
     },
     {
         id: 3,
         name: 'ფასდაკლება',
-        value: 135.00
+        value: "10%",
+        color: '#1877BB'
     },
     {
         id: 4,
         name: 'საფეხური',
-        value: 135.00
+        value: "2",
+        color: '#1877BB'
     },
     {
         id: 5,
         name: 'ტრანზაქციები',
-        value: 135.00
+        value: "7",
+        color: '#34404E'
     },
     {
         id: 6,
         name: 'ჯამური შესყიდვები',
-        value: 135.00
+        value: '2,500 ლარი',
+        color: '#34404E'
     },
 ]
 
@@ -80,12 +85,9 @@ const Home = () => {
                   })
               }
           </div>
-          <Card className={classes.homeCard}>
-              <img src={BigCard} alt='' />
-              <div className={classes.cardInfoWrapper}>
-                  <div></div>
-              </div>
-          </Card>
+          {
+              activeId === 1 && <CardInfo cardInfo={cardInfoData} />
+          }
       </section>
 
   );
