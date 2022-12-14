@@ -1,13 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import Input from "../../UI/input/input";
 
-const EditInfo = ({personalInfo}) => {
-    console.log(personalInfo)
+const EditInfo = ({personalInfo, handleInputChange}) => {
+    const [inputValue, setInputValue] = useState(personalInfo.value)
+
+    const inputValueHandler = (event, index) => {
+        setInputValue(event.target.value)
+        handleInputChange(event ,index)
+        console.log(inputValue)
+    }
   return(
-      <tr >
-          <td>
+      <tr>
+          <td className={`flex-column`}>
               <label>{personalInfo.title}</label>
-              <Input placeholder={personalInfo.value} />
+              <input id={personalInfo.id} onChange={inputValueHandler} value={inputValue} />
           </td>
       </tr>
   )

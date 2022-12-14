@@ -71,6 +71,7 @@ const Home = () => {
     const switchToEditHandler = (id) => {
         localStorage.setItem('activeId', JSON.stringify(id))
         setActiveId(id)
+        //if local storage is empty setid (1)
     }
 
 

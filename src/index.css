@@ -13,9 +13,14 @@ body {
 }
 
 main {
-  margin-top: 6rem;
   display: flex;
   justify-content: center;
+  padding: 6rem 0;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 992px) {

@@ -53,7 +53,8 @@ const subscription = [
 
 const PersonalInfo = () => {
     const [isEdit, setIsEdit] = useState(false)
-    const [personalInfo, setpersonalInfo] = useState(personalInfoData)
+    const [personalInfo, setPersonalInfo] = useState(personalInfoData)
+    const [editedList, setEditedList] = useState(null)
 
     useEffect(() => {
         setIsEdit(JSON.parse(localStorage.getItem('isEdit')))
@@ -71,12 +72,19 @@ const PersonalInfo = () => {
         console.log(e.target.checked)
     }
 
-    const changeInfoHandler = (e) => {
-        e.preventDefault()
-        setpersonalInfo(personalInfo.map(obj => {
-            console.log(obj)
-        }))
-        setIsEdit()
+    useEffect(() => {
+        console.log(personalInfo)
+    },[personalInfo])
+
+    const handleInputChange = (e, index) => {
+        const { id, value } = e.target;
+        setEditedList([...personalInfo]);
+        editedList[id-1].value = value;
+    };
+
+    const handleSaveForm = () => {
+        setPersonalInfo(editedList)
+        setIsEdit(false)
     }
 
     return(
@@ -95,11 +103,11 @@ const PersonalInfo = () => {
                </div>
                 <div className={classes.personalInfoWrapper}>
                     <table>
-                        <tbody>
+                        <tbody className={isEdit? classes.editTbody : ''}>
                         {
                             !isEdit ?
                             personalInfo.map(e => <PersonalInfoTable key={e.id} personalInfo={e} />) :
-                                personalInfo.map(e => <EditInfo key={e.id} personalInfo={e} />)
+                                personalInfo.map(e => <EditInfo handleInputChange={handleInputChange} key={e.id} personalInfo={e} />)
                         }
                         </tbody>
                     </table>
@@ -111,7 +119,7 @@ const PersonalInfo = () => {
                         isEdit &&
                         <div className={classes.footer}>
                             <Button onClick={() => setIsEdit(false)}>გაუქმება</Button>
-                            <Button onClick={changeInfoHandler} type="submit" >შენახვა</Button>
+                            <Button onClick={handleSaveForm} type="button" >შენახვა</Button>
                         </div>
                     }
 
