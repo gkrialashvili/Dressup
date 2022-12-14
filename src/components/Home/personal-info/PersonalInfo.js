@@ -3,6 +3,8 @@ import classes from "../Home.module.scss";
 import Card from "../../UI/Card/Card";
 import EditSvg from '../../../assets/images/edit.svg'
 import PersonalInfoTable from "./PersonalInfoTable";
+import SubscriptionCheckbox from "./SubscriptionCheckbox";
+import EditInfo from "./EditInfo";
 
 const personalInfoData = [
     {
@@ -63,6 +65,10 @@ const PersonalInfo = () => {
         setIsEdit(true)
     }
 
+    const checkboxChangeHandler = (e) => {
+        console.log(e.target.checked)
+    }
+
     return(
         <Card className={classes.homeCard}>
             <div className={classes.cardPersonalInfo}>
@@ -77,21 +83,15 @@ const PersonalInfo = () => {
                     <table>
                         <tbody>
                         {
-                            !isEdit &&
-                            personalInfoData.map(e => <PersonalInfoTable key={e.id} personalInfo={e} />)
+                            !isEdit ?
+                            personalInfoData.map(e => <PersonalInfoTable key={e.id} personalInfo={e} />) :
+                                personalInfoData.map(e => <EditInfo key={e.id} personalInfo={e} />)
                         }
                         </tbody>
                     </table>
                     {
-                        subscription.map(e => {
-                            return(
-                                <label className={classes.checkBoxWrapper}>
-                                    <input checked={e.checked} onChange={(e) => console.log(e.target.checked)} type="checkbox" />
-                                    <p>{e.title}</p>
-                                    <span className={classes.checkmark}></span>
-                                </label>
-                            )
-                        })
+                        subscription.map((e,i) =>
+                            <SubscriptionCheckbox key={i} subscriptionClickHandler={checkboxChangeHandler}  subscription={e} />)
                     }
                 </div>
             </div>

@@ -1,9 +1,15 @@
 import React from "react";
+import Input from "../../UI/input/input";
 
-const EditInfo = () => {
+const EditInfo = ({personalInfo}) => {
+    console.log(personalInfo)
   return(
-      <div>
-      </div>
+      <tr >
+          <td>
+              <label>{personalInfo.title}</label>
+              <Input placeholder={personalInfo.value} />
+          </td>
+      </tr>
   )
 };
 
