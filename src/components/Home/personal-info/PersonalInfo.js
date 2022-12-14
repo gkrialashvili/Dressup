@@ -5,6 +5,7 @@ import EditSvg from '../../../assets/images/edit.svg'
 import PersonalInfoTable from "./PersonalInfoTable";
 import SubscriptionCheckbox from "./SubscriptionCheckbox";
 import EditInfo from "./EditInfo";
+import Button from "../../UI/Button/Button";
 
 const personalInfoData = [
     {
@@ -52,6 +53,7 @@ const subscription = [
 
 const PersonalInfo = () => {
     const [isEdit, setIsEdit] = useState(false)
+    const [personalInfo, setpersonalInfo] = useState(personalInfoData)
 
     useEffect(() => {
         setIsEdit(JSON.parse(localStorage.getItem('isEdit')))
@@ -69,23 +71,35 @@ const PersonalInfo = () => {
         console.log(e.target.checked)
     }
 
+    const changeInfoHandler = (e) => {
+        e.preventDefault()
+        setpersonalInfo(personalInfo.map(obj => {
+            console.log(obj)
+        }))
+        setIsEdit()
+    }
+
     return(
         <Card className={classes.homeCard}>
             <div className={classes.cardPersonalInfo}>
                <div className={classes.titleWrappers}>
                    <h3>პირადი ინფორმაცია</h3>
-                   <div onClick={switchToEditHandler}>
-                       <span>რედაქტირება</span>
-                       <img src={EditSvg} alt='' />
-                   </div>
+                   {
+                       !isEdit &&
+                       <div onClick={switchToEditHandler}>
+                           <span>რედაქტირება</span>
+                           <img src={EditSvg} alt='' />
+                       </div>
+                   }
+
                </div>
                 <div className={classes.personalInfoWrapper}>
                     <table>
                         <tbody>
                         {
                             !isEdit ?
-                            personalInfoData.map(e => <PersonalInfoTable key={e.id} personalInfo={e} />) :
-                                personalInfoData.map(e => <EditInfo key={e.id} personalInfo={e} />)
+                            personalInfo.map(e => <PersonalInfoTable key={e.id} personalInfo={e} />) :
+                                personalInfo.map(e => <EditInfo key={e.id} personalInfo={e} />)
                         }
                         </tbody>
                     </table>
@@ -93,6 +107,14 @@ const PersonalInfo = () => {
                         subscription.map((e,i) =>
                             <SubscriptionCheckbox key={i} subscriptionClickHandler={checkboxChangeHandler}  subscription={e} />)
                     }
+                    {
+                        isEdit &&
+                        <div className={classes.footer}>
+                            <Button onClick={() => setIsEdit(false)}>გაუქმება</Button>
+                            <Button onClick={changeInfoHandler} type="submit" >შენახვა</Button>
+                        </div>
+                    }
+
                 </div>
             </div>
         </Card>
