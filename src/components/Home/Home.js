@@ -7,6 +7,7 @@ import UserSvg from '../../assets/images/user-square.svg'
 import BoxSvg from '../../assets/images/box.svg'
 import CardInfo from "./CardInfo";
 import PersonalInfo from "./personal-info/PersonalInfo";
+import PaymentHistory from "./PaymentHistory/PaymentHistory";
 
 const navLinks = [
     {
@@ -71,13 +72,17 @@ const Home = () => {
     const switchToEditHandler = (id) => {
         localStorage.setItem('activeId', JSON.stringify(id))
         setActiveId(id)
-        //if local storage is empty setid (1)
     }
 
 
     useEffect(() => {
         const navLinkId = JSON.parse(localStorage.getItem('activeId'));
-        setActiveId(navLinkId)
+        if(navLinkId) {
+            setActiveId(navLinkId)
+        } else
+        {
+            setActiveId(1)
+        }
     }, [activeId]);
 
   return (
@@ -103,6 +108,9 @@ const Home = () => {
           }
           {
               activeId === 2 && <PersonalInfo />
+          }
+          {
+              activeId === 3 && <PaymentHistory />
           }
 
       </section>

@@ -1,0 +1,18 @@
+.mainTable {
+  width: 100%;
+  border-radius: 22px;
+  box-sizing: border-box;
+  thead {
+    display: flex;
+    min-height: 3.5rem;
+    background: #F7F8FA;
+    border: 1px solid #F7F9FD;
+    th {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+    }
+  }
+}
