@@ -16,6 +16,12 @@ form {
   align-items: center;
   img {
     max-height: 9rem;
+    @media (max-width: 600px) {
+      max-height: 20rem;
+      @media (max-width: 300px) {
+        max-height: 14rem;
+      }
+    }
   }
 }
 
