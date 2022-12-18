@@ -26,46 +26,9 @@ const navLinks = [
         img: BoxSvg
     }
 ]
-const cardInfoData = [
-    {
-        id: 1,
-        name: 'აქტიური ქულა',
-        value: "135.00",
-        color: '#3FDE81'
-    },
-    {
-        id: 2,
-        name: 'დასარიცხი ქულა',
-        value: "55.00",
-        color: '#FA9F65'
-    },
-    {
-        id: 3,
-        name: 'ფასდაკლება',
-        value: "10%",
-        color: '#1877BB'
-    },
-    {
-        id: 4,
-        name: 'საფეხური',
-        value: "2",
-        color: '#1877BB'
-    },
-    {
-        id: 5,
-        name: 'ტრანზაქციები',
-        value: "7",
-        color: '#34404E'
-    },
-    {
-        id: 6,
-        name: 'ჯამური შესყიდვები',
-        value: '2,500 ლარი',
-        color: '#34404E'
-    },
-]
 
-const Home = () => {
+
+const Home = ({cardInfoData}) => {
 
     const [activeId, setActiveId] = useState(1);
 

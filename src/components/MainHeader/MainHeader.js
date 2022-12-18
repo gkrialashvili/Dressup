@@ -10,7 +10,7 @@ const MainHeader = (props) => {
         <a href='/' className={classes.logo}>
             <img src={Logo} alt='icon'/>
         </a>
-      <Navigation isLoggedIn={props.isAuthenticated} onLogout={props.onLogout} />
+      <Navigation isMobile={props.isMobile} isLoggedIn={props.isAuthenticated} onLogout={props.onLogout} />
     </header>
   );
 };

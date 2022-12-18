@@ -1,18 +1,26 @@
 .main-header {
-/*  position: fixed;
-  top: 0;
-  left: 0;*/
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: #fff;
+  @media (max-width: 725px) {
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 -3px 18px -1px #ccc;
+  }
 
   .logo {
     min-height: 7.75rem;
     display: flex;
     align-items: center;
     padding: 0 6.875rem;
+    @media (max-width: 725px) {
+      padding-left: 7.6875rem;
+      @media (max-width: 300px) {
+        padding: 0 0.25rem;
+      }
+    }
     img {
       max-height: 2.75rem;
     }

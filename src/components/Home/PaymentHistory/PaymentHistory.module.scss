@@ -4,6 +4,9 @@
   box-sizing: border-box;
   border: 1px solid #F7F9FD;
   box-shadow: 0 3px 22px -7px rgba(0, 0, 0 , .26);
+  @media (max-width: 480px) {
+    box-shadow: none;
+  }
 
   tr {
     padding: 1rem 1.75rem;

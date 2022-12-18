@@ -6,6 +6,11 @@
   background: #34404E;
   border: 0.5px solid #E3F4FF;
   padding: 0 6.875rem;
+  @media (max-width: 725px) {
+    background: transparent;
+    border: none;
+    padding: 1rem;
+  }
 
   ul {
     list-style: none;
@@ -28,7 +33,7 @@
         background: transparent;
         border: none;
         color: #fff;
-        font-family: 'Helvetica Neue', serif;
+        font-family: 'HelveticaNeue', serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;

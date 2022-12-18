@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('./assets/fonts/HelveticaNeue.ttf') format('ttf'),
+  url('./assets/fonts/HelveticaNeueRegular.woff2') format('woff2'),
+  url('./assets/fonts/HelveticaNeueRegular.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fff;
+  font-size: 100%;
+
+  @media (max-width: 1325px) {
+      font-size: 11px;
+  }
+  @media (max-width: 992px) {
+    font-size: 12px;
+  }
+  @media (max-width: 480px) {
+    font-size: 11px;
+  }
+  @media (max-width: 400px) {
+    font-size: 10px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'HelveticaNeue', sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 6rem 0;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiPaper-root {
+  box-shadow: none !important;
+  border: none;
+  width: 100%;
+  &:before {
+    display: none !important;
+  }
+  .MuiButtonBase-root {
+    padding: 0 !important;
+  }
+
+}
+
+.Mui-expanded
+{
+  margin: 0 !important;
+}
+
+
+
