@@ -5,7 +5,7 @@ import PersonalInfo from "./Home/personal-info/PersonalInfo";
 import PaymentHistory from "./Home/PaymentHistory/PaymentHistory";
 import classes from "./Home/Home.module.scss";
 
-const HomeMobile = ({cardInfoData}) => {
+const HomeMobile = ({cardInfoData, isMobile}) => {
     function ExpandMoreIcon() {
         return null;
     }
@@ -45,7 +45,7 @@ const HomeMobile = ({cardInfoData}) => {
                     </div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <PaymentHistory />
+                    <PaymentHistory isMobile={isMobile} />
                 </AccordionDetails>
             </Accordion>
         </div>

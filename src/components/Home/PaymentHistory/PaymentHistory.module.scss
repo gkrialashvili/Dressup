@@ -53,3 +53,22 @@
   }
 
 }
+.mobTable {
+  width: 100%;
+  box-sizing: border-box;
+  tbody {
+    display: flex;
+    flex-direction: column;
+    tr {
+      display: flex;
+      td {
+        width: 50%;
+        p{
+          margin: 0;
+          line-height: 1.7rem;
+        }
+      }
+    }
+
+  }
+}
